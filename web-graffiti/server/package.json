@@ -1,0 +1,10 @@
+{
+  "name": "web-graffiti-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tiny WebSocket relay for the Web Graffiti Chrome extension",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "dependencies": { "ws": "^8.18.0" }
+}

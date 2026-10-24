@@ -1,0 +1,8 @@
+{
+  "name": {
+    "message": "Wiki Race"
+  },
+  "description": {
+    "message": "Race from one Wikipedia article to another using only links. Timer, click counter, no search, daily challenges, shareable links."
+  }
+}

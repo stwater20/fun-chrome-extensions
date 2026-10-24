@@ -1,0 +1,5 @@
+{
+  "name": { "message": "網頁物理模式" },
+  "description": { "message": "按一下，整個網頁失去支撐往下掉。標題、圖片、按鈕都能拖、丟、堆疊，按 Esc 恢復原狀。" },
+  "actionTitle": { "message": "讓這頁掉下來（Alt+Shift+G）" }
+}

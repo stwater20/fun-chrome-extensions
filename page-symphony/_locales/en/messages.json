@@ -1,0 +1,5 @@
+{
+  "name": { "message": "Page Symphony" },
+  "description": { "message": "Every website has a theme song. Headings become chords, words become melody, links ding and images shimmer. Record it and share." },
+  "actionTitle": { "message": "Play this page (Alt+Shift+M)" }
+}

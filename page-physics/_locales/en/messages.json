@@ -1,0 +1,5 @@
+{
+  "name": { "message": "Page Physics" },
+  "description": { "message": "One click and the page loses gravity. Drag, throw and stack headlines, images and buttons. Esc puts everything back." },
+  "actionTitle": { "message": "Drop this page (Alt+Shift+G)" }
+}

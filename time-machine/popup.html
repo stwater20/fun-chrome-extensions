@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;width:330px;background:#16131f;color:#f2eefc;font:13px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{padding:14px 16px 10px;display:flex;align-items:baseline;gap:8px}
+  h1{margin:0;font-size:18px}
+  header span{color:#9c95b8;font-size:12px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:4px 16px 12px}
+  .card{all:unset;cursor:pointer;border-radius:12px;overflow:hidden;border:2px solid transparent;background:#221d30}
+  .card:hover{border-color:#ffffff40}
+  .card.on{border-color:#ff6fb1}
+  .card b{display:block;padding:7px 9px 0;font-size:13px}
+  .card small{display:block;padding:0 9px 8px;color:#9c95b8;font-size:11px}
+  .pv{height:70px;position:relative;overflow:hidden}
+  /* tiny previews drawn with CSS */
+  .w95{background:#008080}
+  .w95 i{position:absolute;left:12px;right:12px;top:10px;bottom:16px;background:#c0c0c0;box-shadow:inset -1px -1px #000,inset 1px 1px #fff}
+  .w95 i:before{content:"";position:absolute;left:2px;right:2px;top:2px;height:9px;background:linear-gradient(90deg,#000080,#1084d0)}
+  .w95 u{position:absolute;left:0;right:0;bottom:0;height:10px;background:#c0c0c0;box-shadow:inset 0 1px #fff}
+  .geo{background:#000033 radial-gradient(1px 1px at 10px 10px,#fff,transparent) 0 0/20px 20px}
+  .geo i{position:absolute;left:0;right:0;top:0;height:12px;background:#000080;color:#ff0;font:700 9px/12px "Comic Sans MS",cursive;white-space:nowrap;padding-left:30px}
+  .geo u{position:absolute;left:0;right:0;top:30px;text-align:center;font:700 16px "Comic Sans MS",cursive;text-decoration:none;
+    background:linear-gradient(90deg,#f00,#ff0,#0f0,#0ff,#f0f);-webkit-background-clip:text;color:transparent}
+  .term,.amb{background:#050805;font:14px/1.2 "Courier New",monospace;padding:10px;white-space:pre}
+  .term{color:#33ff66;text-shadow:0 0 5px #33ff66}
+  .amb{color:#ffb000;text-shadow:0 0 5px #ffb000}
+  .term:after,.amb:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0005 0 1px,transparent 1px 3px)}
+  .row{display:flex;gap:8px;padding:0 16px 14px}
+  button.b{flex:1;padding:9px;border-radius:10px;border:1px solid #ffffff22;background:#ffffff0d;color:#f2eefc;font:inherit;cursor:pointer}
+  button.b:hover{background:#ffffff1a}
+  .msg{padding:0 16px 12px;color:#ff8a8a;font-size:12px;min-height:0}
+</style>
+</head>
+<body>
+<header><h1>⏳ Time Machine</h1><span>pick a year</span></header>
+<div class="grid">
+  <button class="card" data-theme="win95"><div class="pv w95"><i></i><u></u></div><b>1995 Desktop</b><small>gray bevels, teal desk</small></button>
+  <button class="card" data-theme="geocities"><div class="pv geo"><i>★ Welcome to my page!! ★</i><u>HOMEPAGE</u></div><b>1998 Homepage</b><small>marquee, sparkles, counter</small></button>
+  <button class="card" data-theme="terminal"><div class="pv term">C:\&gt; LOAD
+READY.
+&gt; █</div><b>Green Terminal</b><small>1983 phosphor CRT</small></button>
+  <button class="card" data-theme="amber"><div class="pv amb">C:\&gt; LOAD
+READY.
+&gt; █</div><b>Amber Terminal</b><small>warm glow, scanlines</small></button>
+</div>
+<div class="row">
+  <button class="b" id="off">⏏ Back to today</button>
+  <button class="b" id="snap">📸 Snapshot</button>
+</div>
+<div class="msg" id="msg"></div>
+<script src="popup.js"></script>
+</body>
+</html>

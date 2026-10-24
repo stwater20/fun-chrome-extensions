@@ -1,0 +1,5 @@
+{
+  "name": { "message": "網頁塗鴉牆" },
+  "description": { "message": "在任何網站貼便利貼、隨手塗鴉。連上塗鴉伺服器後，朋友逛到同一頁就能即時看到，連游標都看得到。" },
+  "actionTitle": { "message": "在這頁塗鴉（Alt+Shift+N）" }
+}

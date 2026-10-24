@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Web Graffiti — Options</title>
+<style>
+  :root{--bg:#14141c;--card:#1f1f2b;--fg:#f4f4f8;--muted:#a3a3b8;--accent:#ff4d6d;--line:#ffffff1c}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  main{max-width:680px;margin:0 auto;padding:32px 20px 60px}
+  h1{font-size:28px;margin:0 0 4px}
+  h1 span{background:linear-gradient(90deg,#ff4d6d,#ffb703,#2ec4b6);-webkit-background-clip:text;color:transparent}
+  .sub{color:var(--muted);margin:0 0 24px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:16px}
+  h2{font-size:16px;margin:0 0 12px}
+  label{display:block;margin:10px 0 4px;color:var(--muted);font-size:13px}
+  input[type=text],input[type=url]{width:100%;padding:9px 11px;border-radius:9px;border:1px solid var(--line);background:#0003;color:var(--fg);font:inherit}
+  input[type=color]{width:44px;height:32px;border:none;background:none;padding:0}
+  .row{display:flex;gap:10px;align-items:center}
+  .check{display:flex;gap:8px;align-items:flex-start;color:var(--fg);font-size:14px;margin-top:12px}
+  .check input{accent-color:var(--accent);margin-top:3px}
+  button{padding:8px 14px;border-radius:9px;border:1px solid var(--line);background:#ffffff10;color:var(--fg);font:inherit;cursor:pointer}
+  button:hover{background:#ffffff1c}
+  button.primary{background:var(--accent);border-color:var(--accent)}
+  .note{color:var(--muted);font-size:12.5px;margin:8px 0 0}
+  code{background:#0005;padding:1px 5px;border-radius:5px}
+  ul{list-style:none;padding:0;margin:0}
+  li{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+  li a{flex:1;color:var(--fg);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  li small{color:var(--muted)}
+  #status{margin-left:8px;font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <h1><span>Web Graffiti</span></h1>
+  <p class="sub">Click the toolbar icon (or Alt+Shift+N) on any page to start drawing and sticking notes.</p>
+
+  <section>
+    <h2>You</h2>
+    <label for="nick">Nickname shown on your notes and cursor</label>
+    <div class="row"><input type="text" id="nick" maxlength="20" placeholder="anon"><input type="color" id="color" title="Cursor color"></div>
+  </section>
+
+  <section>
+    <h2>Share with friends (optional)</h2>
+    <p class="note" style="margin-top:0">Without a server everything stays in this browser. To share, run the small server from the project's <code>server/</code> folder and paste its address here, e.g. <code>wss://graffiti.example.com</code>. Everyone using the same server sees each other's graffiti.</p>
+    <label for="server">Graffiti server</label>
+    <div class="row"><input type="url" id="server" placeholder="wss://…"><button id="test">Test</button></div>
+    <span id="status"></span>
+    <label class="check"><input type="checkbox" id="autoJoin"> <span>Look for other people's graffiti on every page I visit.<br><small style="color:var(--muted)">Off: the server only hears about a page when you open the graffiti toolbar on it. The server only ever receives a SHA-256 hash of the page address, never the address itself.</small></span></label>
+  </section>
+
+  <section>
+    <h2>Pages you've graffitied</h2>
+    <ul id="pages"></ul>
+    <div class="row" style="margin-top:12px">
+      <button id="export">Export</button>
+      <button id="import">Import</button>
+      <input type="file" id="file" accept="application/json" hidden>
+    </div>
+  </section>
+
+  <section>
+    <h2>Muted people</h2>
+    <p class="note" id="mutedInfo" style="margin-top:0"></p>
+    <button id="unmute">Unmute everyone</button>
+  </section>
+</main>
+<script src="options.js"></script>
+</body>
+</html>

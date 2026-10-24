@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Page Dungeon"
+  },
+  "description": {
+    "message": "Turn any page into a roguelike: sections are floors, paragraphs rooms, images treasure, links portals, and ads are monsters."
+  },
+  "actionTitle": {
+    "message": "Enter this page's dungeon (Alt+Shift+D)"
+  }
+}

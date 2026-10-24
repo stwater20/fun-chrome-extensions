@@ -1,0 +1,5 @@
+{
+  "name": { "message": "Web Graffiti" },
+  "description": { "message": "Leave sticky notes and doodles on any website. Connect a graffiti server and friends see them live, cursors and all." },
+  "actionTitle": { "message": "Graffiti this page (Alt+Shift+N)" }
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root{--bg:#1b1026;--fg:#fff;--muted:#c9b6dd;--accent:#ff3d77;--accent2:#ffcc00;--card:#2a1a3b}
+  *{box-sizing:border-box}
+  body{margin:0;width:300px;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{padding:16px 16px 8px;background:linear-gradient(135deg,var(--accent),#8a2be2)}
+  h1{margin:0;font-size:20px;letter-spacing:.02em}
+  header p{margin:2px 0 0;opacity:.85;font-size:12px}
+  .stats{display:flex;gap:8px;padding:12px 16px 4px}
+  .stat{flex:1;background:var(--card);border-radius:10px;padding:8px 10px}
+  .stat b{display:block;font-size:22px;font-variant-numeric:tabular-nums;color:var(--accent2)}
+  .stat span{font-size:11px;color:var(--muted)}
+  .rows{padding:8px 16px 4px}
+  label.row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #ffffff12;cursor:pointer}
+  input[type=checkbox]{accent-color:var(--accent);width:18px;height:18px}
+  select,input[type=range]{accent-color:var(--accent)}
+  select{background:var(--card);color:var(--fg);border:1px solid #ffffff22;border-radius:6px;padding:3px 6px}
+  footer{padding:10px 16px 14px}
+  button{width:100%;padding:8px;border-radius:8px;border:1px solid #ffffff30;background:transparent;color:var(--fg);cursor:pointer;font:inherit}
+  button:hover{background:#ffffff12}
+  .hint{color:var(--muted);font-size:11px;margin-top:8px;text-align:center}
+</style>
+</head>
+<body>
+<header><h1>⌨️💥 Typing Rampage</h1><p>Type anywhere. Keep the combo alive.</p></header>
+<div class="stats">
+  <div class="stat"><b id="best">0</b><span>Best combo</span></div>
+  <div class="stat"><b id="total">0</b><span>Keys exploded</span></div>
+</div>
+<div class="rows">
+  <label class="row">Enabled <input type="checkbox" id="enabled"></label>
+  <label class="row">Particles <input type="checkbox" id="particles"></label>
+  <label class="row">Screen shake <input type="checkbox" id="shake"></label>
+  <label class="row">Sound <input type="checkbox" id="sound"></label>
+  <label class="row">Intensity <input type="range" id="intensity" min="1" max="3" step="1"></label>
+  <label class="row">Colors
+    <select id="theme">
+      <option value="rainbow">Rainbow</option>
+      <option value="fire">Fire</option>
+      <option value="ice">Ice</option>
+      <option value="mono">Mono</option>
+    </select>
+  </label>
+</div>
+<footer>
+  <button id="site" hidden></button>
+  <div class="hint">Password fields are never touched.</div>
+</footer>
+<script src="popup.js"></script>
+</body>
+</html>

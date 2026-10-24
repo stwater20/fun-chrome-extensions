@@ -1,0 +1,5 @@
+{
+  "name": { "message": "網頁地城" },
+  "description": { "message": "把任何網頁變成 roguelike：章節是樓層、段落是房間、圖片是寶箱、連結是傳送門、廣告是怪物。" },
+  "actionTitle": { "message": "進入這頁的地城（Alt+Shift+D）" }
+}

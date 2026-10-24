@@ -1,0 +1,12 @@
+{
+  "name": "fun-chrome-extensions-tests",
+  "private": true,
+  "type": "module",
+  "description": "Headless tests and store screenshots for all eight extensions",
+  "scripts": { "test": "node run.mjs" },
+  "dependencies": {
+    "@sparticuz/chromium": "^153.0.0",
+    "puppeteer-core": "^24.0.0",
+    "ws": "^8.18.0"
+  }
+}

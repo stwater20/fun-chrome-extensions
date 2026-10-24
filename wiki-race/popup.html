@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root{--bg:#f7f5ff;--fg:#1d1b2b;--muted:#6f6a86;--accent:#7b5cff;--line:#e3ddff;--card:#fff}
+  *{box-sizing:border-box}
+  body{margin:0;width:340px;background:var(--bg);color:var(--fg);font:13px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{padding:16px 16px 12px;background:linear-gradient(135deg,#7b5cff,#ff6fb1);color:#fff}
+  h1{margin:0;font-size:20px}
+  header p{margin:2px 0 0;opacity:.9;font-size:12px}
+  main{padding:12px 16px 4px}
+  label{display:block;font-size:11px;color:var(--muted);margin:8px 0 3px;text-transform:uppercase;letter-spacing:.05em}
+  .row{display:flex;gap:6px}
+  input,select{flex:1;min-width:0;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--fg);font:inherit}
+  input:focus,select:focus{outline:2px solid #7b5cff55;border-color:var(--accent)}
+  button{padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer}
+  button:hover{border-color:var(--accent)}
+  .go{width:100%;margin-top:12px;background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700;font-size:14px;padding:10px}
+  .go:hover{filter:brightness(1.08)}
+  .daily{width:100%;margin-top:6px}
+  .err{color:#c62828;min-height:18px;margin-top:6px;font-size:12px}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:14px 0 6px}
+  ul{list-style:none;margin:0;padding:0}
+  li{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:7px 10px;margin-bottom:6px}
+  li .t{font-weight:600}
+  li .m{color:var(--muted);font-size:11.5px}
+  footer{padding:0 16px 14px}
+</style>
+</head>
+<body>
+<header><h1>🏁 Wiki Race</h1><p>Links only. No search. Go.</p></header>
+<main>
+  <label for="lang">Wikipedia</label>
+  <select id="lang">
+    <option value="en">English</option>
+    <option value="zh">中文</option>
+    <option value="ja">日本語</option>
+    <option value="de">Deutsch</option>
+    <option value="fr">Français</option>
+    <option value="es">Español</option>
+  </select>
+  <label for="start">From</label>
+  <div class="row"><input id="start" placeholder="e.g. Bubble tea"><button id="r1" title="Random article">🎲</button></div>
+  <label for="target">To</label>
+  <div class="row"><input id="target" placeholder="e.g. Black hole"><button id="r2" title="Random article">🎲</button></div>
+  <button class="go" id="go">Start race</button>
+  <button class="daily" id="daily">📅 Today's challenge</button>
+  <div class="err" id="err"></div>
+  <div id="liveBox" hidden><h2>Racing now</h2><ul id="live"></ul></div>
+  <h2>Recent finishes</h2>
+  <ul id="hist"></ul>
+</main>
+<footer></footer>
+<script src="wiki.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

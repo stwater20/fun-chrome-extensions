@@ -1,0 +1,6 @@
+node_modules/
+dist/
+tests/shots/
+web-graffiti/server/data/
+_vendor/
+.DS_Store

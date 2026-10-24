@@ -1,0 +1,5 @@
+{
+  "name": { "message": "網頁交響曲" },
+  "description": { "message": "每個網站都有自己的主題曲：標題變和弦、文字變旋律、連結叮一聲、圖片閃閃發光，還能錄下來分享。" },
+  "actionTitle": { "message": "播放這一頁（Alt+Shift+M）" }
+}

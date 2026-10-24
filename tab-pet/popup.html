@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root{--bg:#fff8ec;--fg:#3a2a1a;--muted:#8a7660;--card:#fff;--line:#ecdcc4;--accent:#3aa86b}
+  *{box-sizing:border-box}
+  body{margin:0;width:320px;background:var(--bg);color:var(--fg);font:13px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .stage{position:relative;height:190px;background:radial-gradient(ellipse at 50% 95%,#f3e2c6 0 40%,transparent 41%),linear-gradient(#cfeefe,#fff8ec)}
+  canvas{display:block;margin:0 auto}
+  .name{position:absolute;top:10px;left:12px;font:700 18px/1 system-ui;border:none;background:transparent;color:var(--fg);width:180px;padding:2px 4px;border-radius:6px}
+  .name:hover,.name:focus{background:#ffffffaa;outline:none}
+  .age{position:absolute;top:14px;right:12px;font-size:11px;color:var(--muted)}
+  .bubble{margin:10px 14px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-weight:600;position:relative}
+  .bubble:before{content:"";position:absolute;top:-7px;left:50%;width:12px;height:12px;background:var(--card);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:translateX(-50%) rotate(45deg)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:10px 14px}
+  .grid div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px;text-align:center}
+  .grid b{display:block;font-size:18px;font-variant-numeric:tabular-nums}
+  .grid span{font-size:10px;color:var(--muted)}
+  .btns{display:flex;gap:6px;padding:0 14px}
+  button{flex:1;padding:7px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);font:inherit;cursor:pointer}
+  button:hover{border-color:var(--accent)}
+  details{margin:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+  summary{cursor:pointer;font-weight:600}
+  .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:8px}
+  .row input[type=number]{width:60px;padding:2px 4px;border:1px solid var(--line);border-radius:6px}
+  input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
+  .muted{color:var(--muted);font-size:11px}
+  ul{list-style:none;margin:6px 0 0;padding:0;max-height:140px;overflow:auto}
+  li{display:flex;align-items:center;gap:6px;padding:4px 0;border-top:1px dashed var(--line)}
+  li span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  li button{flex:none;padding:2px 8px;font-size:11px}
+  #toast{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);background:#3a2a1a;color:#fff;padding:6px 12px;border-radius:999px;font-size:12px;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="stage">
+  <input class="name" id="name" maxlength="24" spellcheck="false" title="Rename your pet">
+  <div class="age" id="age"></div>
+  <canvas id="pet" width="220" height="190"></canvas>
+</div>
+<div class="bubble" id="line">…</div>
+<div class="grid">
+  <div><b id="tabs">0</b><span>in belly</span></div>
+  <div><b id="opened">0</b><span>fed today</span></div>
+  <div><b id="closed">0</b><span>exercise</span></div>
+  <div><b id="eaten">0</b><span>snacks</span></div>
+</div>
+<div class="btns">
+  <button id="dedupe" title="Close tabs that are open twice">🏃 Close duplicates</button>
+  <button id="feed" title="Let it eat your oldest idle tab">🍪 Feed oldest tab</button>
+</div>
+<details id="snackBox">
+  <summary>Snack mode</summary>
+  <div class="row"><label for="snackOn">Let it eat idle tabs on its own</label><input type="checkbox" id="snackOn"></div>
+  <div class="row"><label for="threshold">Only when more than</label><span><input type="number" id="threshold" min="3" max="500"> tabs</span></div>
+  <div class="row"><label for="interval">Check every</label><span><input type="number" id="interval" min="1" max="600"> min</span></div>
+  <p class="muted">It only eats the tab you used least recently. Never pinned, playing audio or the tab you're on. Everything it eats can be spat back out below.</p>
+</details>
+<details id="eatenBox">
+  <summary>Stomach contents (<span id="eatenCount">0</span>)</summary>
+  <ul id="eatenList"></ul>
+</details>
+<div id="toast"></div>
+<script src="pet.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
