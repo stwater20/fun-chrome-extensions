@@ -3,7 +3,7 @@
 Copy-paste for the Developer Dashboard. For every extension:
 
 - **Remote code:** No, I am not using remote code.
-- **Privacy policy URL:** `https://github.com/<you>/fun-chrome-extensions/blob/main/PRIVACY.md`
+- **Privacy policy URL:** `https://github.com/stwater20/fun-chrome-extensions/blob/main/PRIVACY.md`
 - **Screenshots / promo tile:** `store/<extension>/`
 - **Data usage certification:** tick all three ("not sold", "not used for unrelated purposes", "not used for creditworthiness").
 
