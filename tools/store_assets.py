@@ -76,3 +76,61 @@ for name, (title, colors, shots) in INFO.items():
         img.save(os.path.join(out, f"screenshot-{i}.png"))
     tile(name, title, colors).save(os.path.join(out, "promo-small-440x280.png"))
     print(name, len(shots), "screenshots")
+
+
+# ---------- marquee promo tile (1400x560) ----------
+TAGLINES = {
+    "typing-rampage": "Every keystroke explodes.",
+    "page-physics": "One click and the page loses gravity.",
+    "tab-pet": "A little blob that eats your tabs.",
+    "web-graffiti": "Sticky notes and doodles on any website.",
+    "wiki-race": "Article to article, links only. Go!",
+    "page-dungeon": "Every web page is a dungeon.",
+    "page-symphony": "Every website has a theme song.",
+    "time-machine": "Send any website back in time.",
+}
+MARQUEE_SHOT = {"tab-pet": "screenshot-1", "wiki-race": "screenshot-2", "time-machine": "screenshot-2"}
+
+
+def marquee(name, title, colors):
+    W, H = 1400, 560
+    m = gradient(W, H, *colors)
+    light = sum(colors[0]) > 520
+    fg = (40, 30, 20) if light else (255, 255, 255)
+    sub = (90, 75, 60) if light else (235, 230, 255)
+    icon = Image.open(os.path.join(ROOT, name, "icons", "512.png")).resize((150, 150), Image.LANCZOS)
+    m.paste(icon, (80, 110), icon)
+    d = ImageDraw.Draw(m)
+    d.text((80, 300), title, font=ImageFont.truetype(SANS, 64 if len(title) < 14 else 56), fill=fg)
+    tf = ImageFont.truetype(SANS.replace("-Bold", ""), 30)
+    words, lines, cur = TAGLINES[name].split(), [], ""
+    for w in words:
+        if d.textlength((cur + " " + w).strip(), font=tf) > 520:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    lines.append(cur)
+    for i, l in enumerate(lines):
+        d.text((82, 390 + i * 42), l, font=tf, fill=sub)
+    # screenshot in a rounded frame, slightly tilted, bleeding off the right edge
+    shot = Image.open(os.path.join(OUT, name, MARQUEE_SHOT.get(name, "screenshot-1") + ".png")).convert("RGB").resize((760, 475), Image.LANCZOS)
+    frame = Image.new("RGBA", (800, 515), (0, 0, 0, 0))
+    fd = ImageDraw.Draw(frame)
+    fd.rounded_rectangle([0, 0, 799, 514], 22, fill=(255, 255, 255, 255))
+    mask = Image.new("L", shot.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, shot.width - 1, shot.height - 1], 14, fill=255)
+    frame.paste(shot, (20, 20), mask)
+    frame = frame.rotate(-4, expand=True, resample=Image.BICUBIC)
+    shadow = Image.new("RGBA", (frame.width + 80, frame.height + 80), (0, 0, 0, 0))
+    shadow.paste((0, 0, 0, 120), (40, 52), frame.split()[3])
+    shadow = shadow.filter(ImageFilter.GaussianBlur(22))
+    m = m.convert("RGBA")
+    m.alpha_composite(shadow, (680 - 40, 10))
+    m.alpha_composite(frame, (680, 0))
+    return m.convert("RGB")
+
+
+for name, (title, colors, _) in INFO.items():
+    marquee(name, title, colors).save(os.path.join(OUT, name, "promo-marquee-1400x560.png"))
+print("marquees done")
